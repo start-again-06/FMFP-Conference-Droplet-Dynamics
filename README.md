@@ -183,13 +183,13 @@ Instead of explicitly evaluating every intermediate collision and streaming step
 
 $$
 \mathcal{G}:
-\left\{
-f_i(\cdot, t_0)
-\right\}_{i=0}^{8}
+\bigl\{
+f_i(\cdot,t_0)
+\bigr\}_{i=0}^{8}
 \longmapsto
-\left\{
-f_i(\cdot, t_0+n\Delta t)
-\right\}_{i=0}^{8}
+\bigl\{
+f_i(\cdot,t_0+n\Delta t)
+\bigr\}_{i=0}^{8}
 $$
 
 where:
