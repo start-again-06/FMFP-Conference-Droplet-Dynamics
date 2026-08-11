@@ -126,7 +126,6 @@ flowchart LR
 
     J --> L
     L -. "Backpropagation" .-> C
-
 ```
 
 # Lattice Boltzmann Method
@@ -144,7 +143,9 @@ For the D2Q9 velocity stencil, the discrete Boltzmann evolution equation is:
 $$
 f_i(\mathbf{x} + \mathbf{c}_i \Delta t, t + \Delta t)
 =
-f_i(\mathbf{x}, t) + \Omega_i(\mathbf{x}, t)
+f_i(\mathbf{x}, t)
++
+\Omega_i(\mathbf{x}, t)
 $$
 
 where $\Omega_i$ represents the collision operator responsible for the local redistribution of particle populations.
@@ -152,7 +153,9 @@ where $\Omega_i$ represents the collision operator responsible for the local red
 The macroscopic density is obtained from the zeroth moment:
 
 $$
-\rho = \sum_{i=0}^{8} f_i
+\rho
+=
+\sum_{i=0}^{8} f_i
 $$
 
 The macroscopic momentum is obtained from the first moment:
@@ -197,3 +200,6 @@ where:
 - $\mathcal{G}$ represents the learned neural operator.
 
 This formulation enables the model to predict multiple future time steps without explicitly resolving every intermediate LBM operation.
+
+```
+
