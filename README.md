@@ -142,10 +142,6 @@ For the D2Q9 velocity stencil, the discrete Boltzmann evolution equation is:
 
 $$
 f_i(\mathbf{x} + \mathbf{c}_i\Delta t,\; t + \Delta t)
-=
-f_i(\mathbf{x}, t)
-+
-\Omega_i(\mathbf{x}, t)
 $$
 
 where $\Omega_i$ represents the collision operator responsible for the local redistribution of particle populations.
