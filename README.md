@@ -141,7 +141,7 @@ where $f_i$ represents the particle distribution associated with the discrete ve
 For the D2Q9 velocity stencil, the discrete Boltzmann evolution equation is:
 
 $$
-f_i(\mathbf{x} + \mathbf{c}_i \Delta t, t + \Delta t)
+f_i(\mathbf{x} + \mathbf{c}_i\Delta t,\; t + \Delta t)
 =
 f_i(\mathbf{x}, t)
 +
@@ -161,9 +161,9 @@ $$
 The macroscopic momentum is obtained from the first moment:
 
 $$
-\rho \mathbf{u}
+\rho\mathbf{u}
 =
-\sum_{i=0}^{8} f_i \mathbf{c}_i
+\sum_{i=0}^{8} f_i\mathbf{c}_i
 $$
 
 and therefore, the macroscopic velocity is:
@@ -172,7 +172,7 @@ $$
 \mathbf{u}
 =
 \frac{1}{\rho}
-\sum_{i=0}^{8} f_i \mathbf{c}_i
+\sum_{i=0}^{8} f_i\mathbf{c}_i
 $$
 
 ---
@@ -186,9 +186,9 @@ $$
 \left\{
 f_i(\cdot, t_0)
 \right\}_{i=0}^{8}
-\rightarrow
+\longmapsto
 \left\{
-f_i(\cdot, t_0 + n\Delta t)
+f_i(\cdot, t_0+n\Delta t)
 \right\}_{i=0}^{8}
 $$
 
@@ -200,6 +200,3 @@ where:
 - $\mathcal{G}$ represents the learned neural operator.
 
 This formulation enables the model to predict multiple future time steps without explicitly resolving every intermediate LBM operation.
-
-```
-
