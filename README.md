@@ -41,26 +41,6 @@ The framework employs a **U-shaped Neural Operator (UNO)** with spectral convolu
 
 ---
 
-# Authors
-
-## Anjan Mahapatra¹
-
-[anjanmahapatra10@gmail.com](mailto:anjanmahapatra10@gmail.com)
-
-¹ Department of Mechanical Engineering  
-Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Kancheepuram  
-Kancheepuram 600127, India
-
-## Nikhil Raj²
-
-[nikhilraj24@iitk.ac.in](mailto:nikhilraj24@iitk.ac.in)
-
-² Department of Mechanical Engineering  
-Indian Institute of Technology (IIT), Kanpur  
-Kanpur 208016, India
-
----
-
 # Abstract
 
 Numerical simulations of turbulent flows at high Reynolds numbers remain computationally prohibitive due to the enormous degrees of freedom required. While machine learning has emerged as a transformative tool, existing approaches within the Lattice Boltzmann Method (LBM) remain fragmented across three disjoint paradigms: collision operator learning, subgrid-scale stress prediction, and neural operator-based fast-forward prediction.
