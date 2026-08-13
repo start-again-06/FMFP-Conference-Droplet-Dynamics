@@ -163,7 +163,7 @@ $$
 
 and therefore, the macroscopic velocity is:
 
-$$ \mathbf{u} = \frac{1}{\rho} \sum_{i=0}^{8} f_i \mathbf{c}_i $$
+$$\mathbf{u} = \frac{1}{\rho} \sum_{i=0}^{8} f_i \mathbf{c}_i$$
 ----
 
 # U-Shaped Neural Operator
