@@ -141,7 +141,11 @@ where $f_i$ represents the particle distribution associated with the discrete ve
 For the D2Q9 velocity stencil, the discrete Boltzmann evolution equation is:
 
 $$
-f_i(\mathbf{x} + \mathbf{c}_i\Delta t,\; t + \Delta t)
+f_i(\mathbf{x} + \mathbf{c}_i \Delta t, t + \Delta t)
+=
+f_i(\mathbf{x}, t)
++
+\Omega_i(\mathbf{x}, t)
 $$
 
 where $\Omega_i$ represents the collision operator responsible for the local redistribution of particle populations.
@@ -157,9 +161,9 @@ $$
 The macroscopic momentum is obtained from the first moment:
 
 $$
-\rho\mathbf{u}
+\rho \mathbf{u}
 =
-\sum_{i=0}^{8} f_i\mathbf{c}_i
+\sum_{i=0}^{8} f_i \mathbf{c}_i
 $$
 
 and therefore, the macroscopic velocity is:
@@ -168,7 +172,7 @@ $$
 \mathbf{u}
 =
 \frac{1}{\rho}
-\sum_{i=0}^{8} f_i\mathbf{c}_i
+\sum_{i=0}^{8} f_i \mathbf{c}_i
 $$
 
 ---
@@ -179,13 +183,9 @@ Instead of explicitly evaluating every intermediate collision and streaming step
 
 $$
 \mathcal{G}:
-\bigl\{
-f_i(\cdot,t_0)
-\bigr\}_{i=0}^{8}
+\{f_i(\cdot, t_0)\}_{i=0}^{8}
 \longmapsto
-\bigl\{
-f_i(\cdot,t_0+n\Delta t)
-\bigr\}_{i=0}^{8}
+\{f_i(\cdot, t_0 + n\Delta t)\}_{i=0}^{8}
 $$
 
 where:
