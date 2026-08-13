@@ -142,10 +142,7 @@ For the D2Q9 velocity stencil, the discrete Boltzmann evolution equation is:
 
 $$
 f_i(\mathbf{x} + \mathbf{c}_i \Delta t, t + \Delta t)
-=
-f_i(\mathbf{x}, t)
-+
-\Omega_i(\mathbf{x}, t)
+= f_i(\mathbf{x}, t) + \Omega_i(\mathbf{x}, t)
 $$
 
 where $\Omega_i$ represents the collision operator responsible for the local redistribution of particle populations.
@@ -154,27 +151,22 @@ The macroscopic density is obtained from the zeroth moment:
 
 $$
 \rho
-=
-\sum_{i=0}^{8} f_i
+= \sum_{i=0}^{8} f_i
 $$
 
 The macroscopic momentum is obtained from the first moment:
 
 $$
 \rho \mathbf{u}
-=
-\sum_{i=0}^{8} f_i \mathbf{c}_i
+= \sum_{i=0}^{8} f_i \mathbf{c}_i
 $$
 
 and therefore, the macroscopic velocity is:
 
 $$
 \mathbf{u}
-=
-\frac{1}{\rho}
-\sum_{i=0}^{8} f_i \mathbf{c}_i
-$$
----
+= \frac{1}{\rho} \sum_{i=0}^{8} f_i \mathbf{c}_i
+----
 
 # U-Shaped Neural Operator
 
