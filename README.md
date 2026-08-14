@@ -190,6 +190,8 @@ This formulation enables the model to predict multiple future time steps without
 
 flowchart TB
 
+mermaid
+```
     A["Input LBM State<br/>9 Distribution Functions"]
 
     A --> B["Encoder Block 1"]
@@ -211,5 +213,4 @@ flowchart TB
     B -. "Skip Connection" .-> J
     D -. "Skip Connection" .-> H
 ```
-
-Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and then transform the resulting representations back into physical space.
+Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and subsequently transform the resulting representations back into physical space.
