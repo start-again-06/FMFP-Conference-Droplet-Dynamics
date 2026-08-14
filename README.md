@@ -185,3 +185,31 @@ where:
 - $\mathcal{G}$ represents the learned neural operator.
 
 This formulation enables the model to predict multiple future time steps without explicitly resolving every intermediate LBM operation.
+----
+# UNO Architecture
+
+flowchart TB
+
+    A["Input LBM State<br/>9 Distribution Functions"]
+
+    A --> B["Encoder Block 1"]
+    B --> C["Spectral Convolution"]
+    C --> D["Encoder Block 2"]
+    D --> E["Spectral Convolution"]
+    E --> F["Encoder Block 3"]
+
+    F --> G["Latent Neural Operator<br/>Representation"]
+
+    G --> H["Decoder Block 1"]
+    H --> I["Spectral Convolution"]
+    I --> J["Decoder Block 2"]
+    J --> K["Spectral Convolution"]
+    K --> L["Decoder Block 3"]
+
+    L --> M["Predicted Future State<br/>9 Distribution Functions"]
+
+    B -. "Skip Connection" .-> J
+    D -. "Skip Connection" .-> H
+```
+
+Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and then transform the resulting representations back into physical space.
