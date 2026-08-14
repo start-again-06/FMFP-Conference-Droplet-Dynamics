@@ -188,10 +188,11 @@ This formulation enables the model to predict multiple future time steps without
 ----
 # UNO Architecture
 
-flowchart TB
-
 mermaid
 ```
+flowchart TB
+
+
     A["Input LBM State<br/>9 Distribution Functions"]
 
     A --> B["Encoder Block 1"]
