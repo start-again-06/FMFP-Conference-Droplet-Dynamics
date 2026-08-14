@@ -185,6 +185,7 @@ where:
 - $\mathcal{G}$ represents the learned neural operator.
 
 This formulation enables the model to predict multiple future time steps without explicitly resolving every intermediate LBM operation.
+
 ----
 # UNO Architecture
 
