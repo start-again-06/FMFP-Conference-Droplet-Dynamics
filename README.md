@@ -189,10 +189,8 @@ This formulation enables the model to predict multiple future time steps without
 ----
 # UNO Architecture
 
-mermaid
-```
+```mermaid
 flowchart TB
-
 
     A["Input LBM State<br/>9 Distribution Functions"]
 
@@ -212,7 +210,8 @@ flowchart TB
 
     L --> M["Predicted Future State<br/>9 Distribution Functions"]
 
-    B -. "Skip Connection" .-> J
-    D -. "Skip Connection" .-> H
+    B -. Skip Connection .-> J
+    D -. Skip Connection .-> H
 ```
+
 Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and subsequently transform the resulting representations back into physical space.
