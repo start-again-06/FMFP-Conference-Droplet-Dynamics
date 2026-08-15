@@ -478,7 +478,7 @@ sequenceDiagram
     participant DATA as Dataset
     participant UNO as PINO-LBM
     participant PHYS as Physics Constraints
-    participant OPT as Adam Optimizer
+    participant ADAM as Adam Optimizer
     participant EVAL as Evaluation
 
     LBM->>DATA: Generate turbulent snapshots
@@ -494,8 +494,8 @@ sequenceDiagram
     PHYS->>PHYS: Equivariance
     PHYS->>PHYS: SGS energy transfer
 
-    PHYS->>OPT: Total loss
-    OPT->>UNO: Parameter update
+    PHYS->>ADAM: Total loss
+    ADAM->>UNO: Parameter update
 
     UNO->>EVAL: Trained model
 
