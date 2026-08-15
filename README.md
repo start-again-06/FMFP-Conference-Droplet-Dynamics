@@ -287,3 +287,138 @@ where:
 | $\lambda_{\Pi}$ | SGS energy-transfer loss weighting coefficient |
 
 The combined objective encourages the neural operator to simultaneously learn the evolution of the distribution functions while preserving important physical properties associated with the underlying lattice Boltzmann formulation and subgrid-scale turbulence dynamics.
+
+## Physics-Informed Loss Architecture
+
+```mermaid
+flowchart TD
+
+    A["Predicted LBM State"]
+
+    A --> B["Data Fidelity"]
+    A --> C["Moment Matching"]
+    A --> D["Equivariance"]
+    A --> E["SGS Energy Transfer"]
+
+    B --> F["L_data"]
+    C --> G["L_mom"]
+    D --> H["L_equiv"]
+    E --> I["L_Π"]
+
+    F --> J["Weighted Loss Combination"]
+    G --> J
+    H --> J
+    I --> J
+
+    J --> K["Total Physics-Informed Loss"]
+    K --> L["Backpropagation"]
+    L --> M["UNO Parameter Update"]
+```
+
+# 6. Physics-Informed Loss Functions
+
+## 6.1 Data Fidelity Loss
+
+The data fidelity loss minimizes the difference between the predicted and reference LBM distribution functions:
+
+$$
+\mathcal{L}_{\mathrm{data}}
+=
+\frac{1}{9}
+\sum_{i=0}^{8}
+\left\|
+f_{i,\mathrm{pred}}
+-
+f_{i,\mathrm{true}}
+\right\|_2^2
+$$
+
+This minimizes the deviation between the predicted and reference distribution functions.
+
+---
+
+## 6.2 Moment-Matching Loss
+
+The moment-matching loss explicitly constrains the macroscopic density and momentum fields:
+
+$$
+\mathcal{L}_{\mathrm{mom}}
+=
+\left|
+\rho_{\mathrm{pred}}
+-
+\rho_{\mathrm{true}}
+\right|^2
++
+\left\|
+(\rho \mathbf{u})_{\mathrm{pred}}
+-
+(\rho \mathbf{u})_{\mathrm{true}}
+\right\|_2^2
+$$
+
+This explicitly promotes:
+
+- Mass conservation
+- Momentum conservation
+
+---
+
+## 6.3 Equivariance Loss
+
+The equivariance loss encourages the neural operator to preserve the symmetry properties of the lattice:
+
+$$
+\mathcal{L}_{\mathrm{equiv}}
+=
+\left\|
+G(\mathbf{R} \cdot f)
+-
+\mathbf{R} \cdot G(f)
+\right\|_2^2
+$$
+
+where $\mathbf{R}$ represents a lattice symmetry transformation.
+
+The relevant transformations include:
+
+- 90° rotation
+- 180° rotation
+- 270° rotation
+- Reflection
+
+This promotes consistency under the relevant dihedral symmetry operations.
+
+---
+
+## 6.4 SGS Energy Transfer Loss
+
+The SGS energy-transfer loss constrains the predicted subgrid-scale energy transfer:
+
+$$
+\mathcal{L}_{\Pi}
+=
+\left|
+\Pi_{\mathrm{pred}}
+-
+\Pi_{\mathrm{true}}
+\right|^2
+$$
+
+where the SGS energy transfer is defined as:
+
+$$
+\Pi
+=
+-
+\tau_{ij} S_{ij}
+$$
+
+with:
+
+- $\tau_{ij}$: Subgrid-scale stress tensor
+- $S_{ij}$: Resolved strain-rate tensor
+- $\Pi$: Subgrid-scale energy transfer
+
+The SGS loss enables the model to learn both forward energy transfer and physically meaningful backscatter.
+
