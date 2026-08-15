@@ -470,6 +470,7 @@ flowchart LR
 
 # End-to-End Training Process
     
+```mermaid
 sequenceDiagram
 
     participant LBM as D2Q9 LBM Solver
