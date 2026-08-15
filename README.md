@@ -557,7 +557,7 @@ Negative SGS energy-transfer events correspond to **backscatter**, representing 
 
 ---
 
-# 10. Results at a Glance
+# Results at a Glance
 
 | Metric | PINO-LBM Performance |
 |---|---|
@@ -675,7 +675,7 @@ data:
 
 ---
 
-# 14. Mathematical Summary
+# Mathematical Summary
 
 The complete learned neural operator is:
 
@@ -719,7 +719,7 @@ E(k)
 k^{-5/3}
 ```
 
-# 15. Comparison with Classical SGS Modeling
+# Comparison with Classical SGS Modeling
 
 | Property | Classical Smagorinsky | PINO-LBM |
 |---|---|---|
@@ -738,37 +738,36 @@ k^{-5/3}
 
 ---
 
-# 16. Core Physical Quantities
+# Core Physical Quantities
 
-## Density
+## 16. Core Physical Quantities
+
+### Density
 
 $$
 \rho
 =
-\sum_{i=0}^{8}
-f_i
+\sum_{i=0}^{8} f_i
 $$
 
-## Momentum
+### Momentum
 
 $$
 \rho\mathbf{u}
 =
-\sum_{i=0}^{8}
-f_i\mathbf{c}_i
+\sum_{i=0}^{8} f_i\mathbf{c}_i
 $$
 
-## Velocity
+### Velocity
 
 $$
 \mathbf{u}
 =
 \frac{1}{\rho}
-\sum_{i=0}^{8}
-f_i\mathbf{c}_i
+\sum_{i=0}^{8} f_i\mathbf{c}_i
 $$
 
-## SGS Energy Transfer
+### SGS Energy Transfer
 
 $$
 \Pi
@@ -776,7 +775,7 @@ $$
 -\tau_{ij}S_{ij}
 $$
 
-## Velocity Structure Function
+### Velocity Structure Function
 
 $$
 S_p(r)
@@ -789,64 +788,6 @@ S_p(r)
 \right|^p
 \right\rangle
 $$
-
-## Turbulent Energy Spectrum
-
-$$
-E(k)
-\sim
-k^{-5/3}
-$$
-
----
-
-## Fallback Syntax (Fenced `math` Blocks)
-
-```math
-\rho
-=
-\sum_{i=0}^{8}
-f_i
-```
-
-```math
-\rho\mathbf{u}
-=
-\sum_{i=0}^{8}
-f_i\mathbf{c}_i
-```
-
-```math
-\mathbf{u}
-=
-\frac{1}{\rho}
-\sum_{i=0}^{8}
-f_i\mathbf{c}_i
-```
-
-```math
-\Pi
-=
--\tau_{ij}S_{ij}
-```
-
-```math
-S_p(r)
-=
-\left\langle
-\left|
-\mathbf{u}(\mathbf{x}+\mathbf{r})
--
-\mathbf{u}(\mathbf{x})
-\right|^p
-\right\rangle
-```
-
-```math
-E(k)
-\sim
-k^{-5/3}
-```
 
 ---
 ---
