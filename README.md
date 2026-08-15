@@ -317,11 +317,35 @@ flowchart TD
 
 # Physics-Informed Loss Functions
 
+$$
+\mathcal{L}
+=
+\mathcal{L}_{\mathrm{data}}
++
+\lambda_{\mathrm{mom}} \mathcal{L}_{\mathrm{mom}}
++
+\lambda_{\mathrm{equiv}} \mathcal{L}_{\mathrm{equiv}}
++
+\lambda_{\Pi} \mathcal{L}_{\Pi}
+$$
+
+---
+
 ## a. Data Fidelity Loss
 
 The data fidelity loss minimizes the difference between the predicted and reference LBM distribution functions:
 
-<img src="https://latex.codecogs.com/svg.latex?\mathcal{L}_{\mathrm{data}}%20=%20\frac{1}{9}%20\sum_{i=0}^{8}%20\left\|%20f_{i,\mathrm{pred}}%20-%20f_{i,\mathrm{true}}%20\right\|_2^2" alt="Data Fidelity Loss" />
+$$
+\mathcal{L}_{\mathrm{data}}
+=
+\frac{1}{9}
+\sum_{i=0}^{8}
+\left\|
+f_{i,\mathrm{pred}}
+-
+f_{i,\mathrm{true}}
+\right\|_2^2
+$$
 
 This minimizes the deviation between the predicted and reference distribution functions.
 
@@ -331,7 +355,21 @@ This minimizes the deviation between the predicted and reference distribution fu
 
 The moment-matching loss explicitly constrains the macroscopic density and momentum fields:
 
-<img src="https://latex.codecogs.com/svg.latex?\mathcal{L}_{\mathrm{mom}}%20=%20\left|%20\rho_{\mathrm{pred}}%20-%20\rho_{\mathrm{true}}%20\right|^2%20+%20\left\|%20(\rho%20\mathbf{u})_{\mathrm{pred}}%20-%20(\rho%20\mathbf{u})_{\mathrm{true}}%20\right\|_2^2" alt="Moment-Matching Loss" />
+$$
+\mathcal{L}_{\mathrm{mom}}
+=
+\left|
+\rho_{\mathrm{pred}}
+-
+\rho_{\mathrm{true}}
+\right|^2
++
+\left\|
+(\rho \mathbf{u})_{\mathrm{pred}}
+-
+(\rho \mathbf{u})_{\mathrm{true}}
+\right\|_2^2
+$$
 
 This explicitly promotes:
 
@@ -344,7 +382,15 @@ This explicitly promotes:
 
 The equivariance loss encourages the neural operator to preserve the symmetry properties of the lattice:
 
-<img src="https://latex.codecogs.com/svg.latex?\mathcal{L}_{\mathrm{equiv}}%20=%20\left\|%20G(\mathbf{R}%20\cdot%20f)%20-%20\mathbf{R}%20\cdot%20G(f)%20\right\|_2^2" alt="Equivariance Loss" />
+$$
+\mathcal{L}_{\mathrm{equiv}}
+=
+\left\|
+G(\mathbf{R} \cdot f)
+-
+\mathbf{R} \cdot G(f)
+\right\|_2^2
+$$
 
 where $\mathbf{R}$ represents a lattice symmetry transformation.
 
@@ -363,11 +409,24 @@ This promotes consistency under the relevant dihedral symmetry operations.
 
 The SGS energy-transfer loss constrains the predicted subgrid-scale energy transfer:
 
-<img src="https://latex.codecogs.com/svg.latex?\mathcal{L}_{\Pi}%20=%20\left|%20\Pi_{\mathrm{pred}}%20-%20\Pi_{\mathrm{true}}%20\right|^2" alt="SGS Energy Transfer Loss" />
+$$
+\mathcal{L}_{\Pi}
+=
+\left|
+\Pi_{\mathrm{pred}}
+-
+\Pi_{\mathrm{true}}
+\right|^2
+$$
 
 where the SGS energy transfer is defined as:
 
-<img src="https://latex.codecogs.com/svg.latex?\Pi%20=%20-%20\tau_{ij}%20S_{ij}" alt="Pi definition" />
+$$
+\Pi
+=
+-
+\tau_{ij} S_{ij}
+$$
 
 with:
 
