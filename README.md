@@ -436,3 +436,37 @@ with:
 
 The SGS loss enables the model to learn both forward energy transfer and physically meaningful backscatter.
 
+# Turbulence Modeling Pipeline
+
+```mermaid
+flowchart LR
+
+    A["2D Homogeneous<br/>Isotropic Turbulence"]
+
+    B["D2Q9 LBM<br/>Reference Solver"]
+
+    C["Physical Dataset"]
+
+    D["PINO-LBM<br/>Training"]
+
+    E["Future Flow<br/>Prediction"]
+
+    F["Macroscopic Fields"]
+
+    G["Turbulence Diagnostics"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+
+    G --> H["Energy Spectrum"]
+    G --> I["Structure Functions"]
+    G --> J["Vorticity"]
+    G --> K["SGS Energy Transfer"]
+```
+
+
+    
