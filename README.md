@@ -215,3 +215,88 @@ flowchart TB
 ```
 
 Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and subsequently transform the resulting representations back into physical space.
+
+# 3. Spectral Convolution
+
+Spectral convolution enables the neural operator to capture long-range spatial dependencies and global interactions.
+
+The input field is first transformed into Fourier space:
+
+$$
+\hat{u}(\mathbf{k}) = \mathcal{F}[u(\mathbf{x})]
+$$
+
+where $\mathcal{F}$ denotes the Fourier transform and $\mathbf{k}$ represents the spatial frequency vector.
+
+A learned spectral transformation is then applied:
+
+$$
+\hat{v}(\mathbf{k}) =
+W(\mathbf{k}) \hat{u}(\mathbf{k})
+$$
+
+where $W(\mathbf{k})$ represents the learned complex-valued spectral weights.
+
+The resulting representation is subsequently transformed back into physical space:
+
+$$
+v(\mathbf{x}) =
+\mathcal{F}^{-1}[\hat{v}(\mathbf{k})]
+$$
+
+This formulation enables the model to learn global spatial interactions while preserving the computational structure of an operator-learning architecture.
+
+---
+
+# 4. Discretization Invariance
+
+A major objective of the neural operator formulation is to reduce dependence on a single spatial discretization.
+
+Unlike conventional neural networks that are often tied to a fixed input resolution, neural operators learn mappings between function spaces. This allows the learned operator to be evaluated on different spatial resolutions, subject to the numerical representation and training strategy.
+
+The formulation is intended to enable:
+
+- Resolution-independent learning
+- Zero-shot super-resolution
+- Inference on finer spatial grids
+- Reduced dependence on a specific computational mesh
+- Improved generalization across different discretizations
+
+This property is particularly useful for fluid-flow simulations, where high-resolution computational grids can significantly increase computational cost.
+
+---
+
+# 5. Physics-Informed Learning
+
+The model does not rely solely on data-driven prediction. Instead, physical constraints derived from the underlying kinetic and fluid-dynamical formulation are explicitly incorporated into the training objective.
+
+The total loss is defined as:
+
+$$
+\mathcal{L}
+=
+\mathcal{L}_{\mathrm{data}}
++
+\lambda_{\mathrm{mom}}
+\mathcal{L}_{\mathrm{mom}}
++
+\lambda_{\mathrm{equiv}}
+\mathcal{L}_{\mathrm{equiv}}
++
+\lambda_{\Pi}
+\mathcal{L}_{\Pi}
+$$
+
+where:
+
+| Symbol | Description |
+|--------|-------------|
+| $\mathcal{L}_{\mathrm{data}}$ | Distribution-function data loss |
+| $\mathcal{L}_{\mathrm{mom}}$ | Moment-matching loss |
+| $\mathcal{L}_{\mathrm{equiv}}$ | Equivariance loss |
+| $\mathcal{L}_{\Pi}$ | SGS energy-transfer loss |
+| $\lambda_{\mathrm{mom}}$ | Moment-loss weighting coefficient |
+| $\lambda_{\mathrm{equiv}}$ | Equivariance-loss weighting coefficient |
+| $\lambda_{\Pi}$ | SGS energy-transfer loss weighting coefficient |
+
+The combined objective encourages the neural operator to simultaneously learn the evolution of the distribution functions while preserving important physical properties associated with the underlying lattice Boltzmann formulation and subgrid-scale turbulence dynamics.
