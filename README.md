@@ -705,12 +705,10 @@ subject to the composite physics-informed loss:
 
 The SGS energy transfer is defined as:
 
-$$
+```math
 \Pi
-=
 -\tau_{ij}S_{ij}
-$$
-
+```
 The turbulent energy spectrum follows the inertial-range scaling:
 
 ```math
@@ -740,44 +738,44 @@ k^{-5/3}
 
 # Core Physical Quantities
 
-## 16. Core Physical Quantities
+## Core Physical Quantities
 
 ### Density
 
-$$
+```math
 \rho
 =
 \sum_{i=0}^{8} f_i
-$$
+```
 
 ### Momentum
 
-$$
+```math
 \rho\mathbf{u}
 =
 \sum_{i=0}^{8} f_i\mathbf{c}_i
-$$
+```
 
 ### Velocity
 
-$$
+```math
 \mathbf{u}
 =
 \frac{1}{\rho}
 \sum_{i=0}^{8} f_i\mathbf{c}_i
-$$
+```
 
 ### SGS Energy Transfer
 
-$$
+```math
 \Pi
 =
 -\tau_{ij}S_{ij}
-$$
+```
 
 ### Velocity Structure Function
 
-$$
+```math
 S_p(r)
 =
 \left\langle
@@ -787,8 +785,7 @@ S_p(r)
 \mathbf{u}(\mathbf{x})
 \right|^p
 \right\rangle
-$$
-
+```
 ---
 
 # Why PINO-LBM?
