@@ -272,17 +272,7 @@ The model does not rely solely on data-driven prediction. Instead, physical cons
 
 The total loss is defined as:
 
-$$
-\mathcal{L}
-=
-\mathcal{L}_{\mathrm{data}}
-+
-\lambda_{\mathrm{mom}} \mathcal{L}_{\mathrm{mom}}
-+
-\lambda_{\mathrm{equiv}} \mathcal{L}_{\mathrm{equiv}}
-+
-\lambda_{\Pi} \mathcal{L}_{\Pi}
-$$
+$$\mathcal{L} = \mathcal{L}_{\mathrm{data}} + \lambda_{\mathrm{mom}} \mathcal{L}_{\mathrm{mom}} + \lambda_{\mathrm{equiv}} \mathcal{L}_{\mathrm{equiv}} + \lambda_{\Pi} \mathcal{L}_{\Pi}$$
 
 where:
 
