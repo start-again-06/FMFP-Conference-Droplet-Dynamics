@@ -790,9 +790,8 @@ S_p(r)
 $$
 
 ---
----
 
-# 17. Why PINO-LBM?
+# Why PINO-LBM?
 
 ## Lattice Boltzmann Method
 
@@ -816,7 +815,7 @@ Allows the framework to represent energy transfer between resolved and unresolve
 
 ---
 
-# 18. Reproducibility
+# Reproducibility
 
 The framework is designed to support reproducible experiments through fixed model configurations, explicitly defined physics-informed loss weights, consistent dataset generation, and standardized evaluation diagnostics.
 
@@ -840,7 +839,7 @@ flowchart LR
 
 ---
 
-# 19. Evaluation Metrics
+# Evaluation Metrics
 
 | Diagnostic | Purpose |
 |---|---|
@@ -857,7 +856,7 @@ flowchart LR
 
 ---
 
-# 20. Project Status
+# Project Status
 
 This repository contains the research implementation associated with the FMFP 2026 publication.
 
@@ -874,7 +873,7 @@ The current implementation focuses on:
 
 ---
 
-# 21. Citation
+# Citation
 
 If you use this framework or implementation in your research, please cite:
 
