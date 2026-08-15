@@ -470,9 +470,10 @@ flowchart LR
 
 # End-to-End Training Process
     
+# End-to-End Training Process
+
 ```mermaid
 sequenceDiagram
-
     participant LBM as D2Q9 LBM Solver
     participant DATA as Dataset
     participant UNO as PINO-LBM
@@ -502,4 +503,3 @@ sequenceDiagram
     EVAL->>EVAL: Structure functions
     EVAL->>EVAL: Vorticity
     EVAL->>EVAL: Backscatter statistics
-```
