@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/start-again-06/FMFP-Conference-Droplet-Dynamics/blob/0ad4a992d73e1933d9c05705e2cc462222f8c839/PINO_LBM.png" alt="PINO-LBM - Physics-Informed Boltzmann Kinetic Learning" width="100%">
+<img src="https://github.com/start-again-06/FMFP-Conference-Droplet-Dynamics/blob/9835f3421d54d54f2ebe9242919d3356efa5742a/PINO_LBM.png" alt="PINO-LBM - Physics-Informed Boltzmann Kinetic Learning" width="100%">
 
 # Physics-Informed Boltzmann Kinetic Learning for Subgrid-Scale Turbulence Modeling
 
