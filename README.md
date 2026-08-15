@@ -216,7 +216,7 @@ flowchart TB
 
 Each block combines local convolutional operations with spectral convolution layers to capture both local features and long-range spatial dependencies. The spectral layers transform the feature representations into Fourier space, apply learned complex-valued weights to the relevant frequency modes, and subsequently transform the resulting representations back into physical space.
 
-# 3. Spectral Convolution
+# Spectral Convolution
 
 Spectral convolution enables the neural operator to capture long-range spatial dependencies and global interactions.
 
@@ -248,7 +248,7 @@ This formulation enables the model to learn global spatial interactions while pr
 
 ---
 
-# 4. Discretization Invariance
+# Discretization Invariance
 
 A major objective of the neural operator formulation is to reduce dependence on a single spatial discretization.
 
@@ -266,7 +266,7 @@ This property is particularly useful for fluid-flow simulations, where high-reso
 
 ---
 
-# 5. Physics-Informed Learning
+# Physics-Informed Learning
 
 The model does not rely solely on data-driven prediction. Instead, physical constraints derived from the underlying kinetic and fluid-dynamical formulation are explicitly incorporated into the training objective.
 
@@ -317,7 +317,7 @@ flowchart TD
 
 # Physics-Informed Loss Functions
 
-## 1. Data Fidelity Loss
+## a. Data Fidelity Loss
 
 The data fidelity loss minimizes the difference between the predicted and reference LBM distribution functions:
 
@@ -337,7 +337,7 @@ This minimizes the deviation between the predicted and reference distribution fu
 
 ---
 
-## 2. Moment-Matching Loss
+## b. Moment-Matching Loss
 
 The moment-matching loss explicitly constrains the macroscopic density and momentum fields:
 
@@ -364,7 +364,7 @@ This explicitly promotes:
 
 ---
 
-## 3. Equivariance Loss
+## c. Equivariance Loss
 
 The equivariance loss encourages the neural operator to preserve the symmetry properties of the lattice:
 
@@ -391,7 +391,7 @@ This promotes consistency under the relevant dihedral symmetry operations.
 
 ---
 
-## 4. SGS Energy Transfer Loss
+## d. SGS Energy Transfer Loss
 
 The SGS energy-transfer loss constrains the predicted subgrid-scale energy transfer:
 
