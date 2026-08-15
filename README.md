@@ -277,14 +277,11 @@ $$
 =
 \mathcal{L}_{\mathrm{data}}
 +
-\lambda_{\mathrm{mom}}
-\mathcal{L}_{\mathrm{mom}}
+\lambda_{\mathrm{mom}} \mathcal{L}_{\mathrm{mom}}
 +
-\lambda_{\mathrm{equiv}}
-\mathcal{L}_{\mathrm{equiv}}
+\lambda_{\mathrm{equiv}} \mathcal{L}_{\mathrm{equiv}}
 +
-\lambda_{\Pi}
-\mathcal{L}_{\Pi}
+\lambda_{\Pi} \mathcal{L}_{\Pi}
 $$
 
 where:
