@@ -315,9 +315,9 @@ flowchart TD
     L --> M["UNO Parameter Update"]
 ```
 
-# 6. Physics-Informed Loss Functions
+# Physics-Informed Loss Functions
 
-## 6.1 Data Fidelity Loss
+## 1. Data Fidelity Loss
 
 The data fidelity loss minimizes the difference between the predicted and reference LBM distribution functions:
 
@@ -337,7 +337,7 @@ This minimizes the deviation between the predicted and reference distribution fu
 
 ---
 
-## 6.2 Moment-Matching Loss
+## 2. Moment-Matching Loss
 
 The moment-matching loss explicitly constrains the macroscopic density and momentum fields:
 
@@ -364,7 +364,7 @@ This explicitly promotes:
 
 ---
 
-## 6.3 Equivariance Loss
+## 3. Equivariance Loss
 
 The equivariance loss encourages the neural operator to preserve the symmetry properties of the lattice:
 
@@ -391,7 +391,7 @@ This promotes consistency under the relevant dihedral symmetry operations.
 
 ---
 
-## 6.4 SGS Energy Transfer Loss
+## 4. SGS Energy Transfer Loss
 
 The SGS energy-transfer loss constrains the predicted subgrid-scale energy transfer:
 
