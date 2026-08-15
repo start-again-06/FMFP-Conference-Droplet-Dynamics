@@ -502,3 +502,427 @@ sequenceDiagram
     EVAL->>EVAL: Vorticity
     EVAL->>EVAL: Backscatter statistics
 ```
+
+# 9. Key Results
+
+## Density Prediction
+
+The proposed neural-kinetic model achieves approximately:
+
+$$
+1.5\%
+$$
+
+relative density prediction error, with absolute error on the order of:
+
+$$
+\mathcal{O}(10^{-3})
+$$
+
+---
+
+## Kolmogorov Spectral Scaling
+
+The model reproduces the theoretical inertial-range scaling:
+
+$$
+E(k) \sim k^{-5/3}
+$$
+
+This demonstrates that the learned model can reproduce the characteristic turbulent energy cascade.
+
+---
+
+## Intermittency and Structure Functions
+
+The $p$-th order velocity structure function is:
+
+$$
+S_p(r)
+=
+\left\langle
+\left|
+\mathbf{u}(\mathbf{x}+\mathbf{r})
+-
+\mathbf{u}(\mathbf{x})
+\right|^p
+\right\rangle
+$$
+
+The framework evaluates first-, second-, and third-order structure functions to assess turbulent scaling and intermittency.
+
+---
+
+## Physical Backscatter
+
+Approximately:
+
+$$
+15\%-20\%
+$$
+
+of SGS energy-transfer events are negative.
+
+Negative SGS energy-transfer events correspond to **backscatter**, representing energy transfer from unresolved scales toward resolved scales.
+
+---
+
+# 10. Results at a Glance
+
+| Metric | PINO-LBM Performance |
+|---|---|
+| Relative Density Error | Approximately $1.5\%$ |
+| Absolute Density Error | $\mathcal{O}(10^{-3})$ |
+| Energy Spectrum | Reproduces $k^{-5/3}$ scaling |
+| Structure Functions | Captures first-, second-, and third-order statistics |
+| Intermittency | Reproduces anomalous turbulent scaling |
+| SGS Energy Transfer | Learns forward and backward energy transfer |
+| Physical Backscatter | Approximately $15\%-20\%$ negative events |
+| Comparison Baseline | Classical Smagorinsky model |
+
+---
+
+# 11. Getting Started
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/PINO-LBM.git
+cd PINO-LBM
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Requirements
+
+```text
+Python >= 3.8
+PyTorch >= 1.10
+NumPy
+SciPy
+Matplotlib
+```
+
+---
+
+# 12. Running the Framework
+
+## Generate LBM Dataset
+
+Generate the physical reference data using the D2Q9 LBM solver:
+
+```bash
+python utils/lbm_solver.py \
+    --grid_size 64 \
+    --num_snapshots 1200 \
+    --save_path data/
+```
+
+## Train PINO-LBM
+
+Train the physics-informed neural operator:
+
+```bash
+python train.py \
+    --epochs 30 \
+    --lr 1e-3 \
+    --lambda_mom 1.0 \
+    --lambda_equiv 0.1 \
+    --lambda_sgs 0.1
+```
+
+## Evaluate
+
+Evaluate the trained model:
+
+```bash
+python evaluate.py \
+    --checkpoint checkpoints/best_model.pt
+```
+
+The evaluation pipeline generates:
+
+- Energy spectra
+- Prediction error maps
+- Structure functions
+- Vorticity fields
+- SGS energy-transfer distributions
+- Backscatter statistics
+
+---
+
+# 13. Example Configuration
+
+```yaml
+model:
+  architecture: UNO
+  input_channels: 9
+  output_channels: 9
+  spectral_layers: true
+  encoder_decoder_blocks: 3
+
+training:
+  epochs: 30
+  learning_rate: 1e-3
+  optimizer: Adam
+
+physics:
+  lambda_mom: 1.0
+  lambda_equiv: 0.1
+  lambda_sgs: 0.1
+
+data:
+  lattice: D2Q9
+  grid_size: 64
+  snapshots: 1200
+```
+
+---
+
+# 14. Mathematical Summary
+
+The complete learned neural operator is:
+
+$$
+\mathcal{G}_{\theta}:
+\mathbf{f}(\mathbf{x},t)
+\longmapsto
+\mathbf{f}(\mathbf{x},t+n\Delta t)
+$$
+
+subject to the composite physics-informed loss:
+
+$$
+\mathcal{L}
+=
+\mathcal{L}_{\mathrm{data}}
++
+\lambda_{\mathrm{mom}}
+\mathcal{L}_{\mathrm{mom}}
++
+\lambda_{\mathrm{equiv}}
+\mathcal{L}_{\mathrm{equiv}}
++
+\lambda_{\Pi}
+\mathcal{L}_{\Pi}
+$$
+
+The SGS energy transfer is defined as:
+
+$$
+\Pi
+=
+-\tau_{ij}S_{ij}
+$$
+
+The turbulent energy spectrum follows the inertial-range scaling:
+
+$$
+E(k)
+\sim
+k^{-5/3}
+$$
+
+---
+
+# 15. Comparison with Classical SGS Modeling
+
+| Property | Classical Smagorinsky | PINO-LBM |
+|---|---|---|
+| Data-driven | No | Yes |
+| Neural Operator | No | Yes |
+| Physics-informed | Limited | Yes |
+| Mass Conservation | Model dependent | Explicitly constrained |
+| Momentum Conservation | Model dependent | Explicitly constrained |
+| Symmetry Equivariance | No | Yes |
+| SGS Energy Transfer | Dissipative | Learned |
+| Physical Backscatter | No | Yes |
+| Intermittency | Limited | Yes |
+| Spectral Learning | No | Yes |
+| Resolution Generalization | Limited | Designed for it |
+| Fast-forward Prediction | No | Yes |
+
+---
+
+# 16. Core Physical Quantities
+
+## Density
+
+$$
+\rho
+=
+\sum_{i=0}^{8}
+f_i
+$$
+
+## Momentum
+
+$$
+\rho\mathbf{u}
+=
+\sum_{i=0}^{8}
+f_i\mathbf{c}_i
+$$
+
+## Velocity
+
+$$
+\mathbf{u}
+=
+\frac{1}{\rho}
+\sum_{i=0}^{8}
+f_i\mathbf{c}_i
+$$
+
+## SGS Energy Transfer
+
+$$
+\Pi
+=
+-\tau_{ij}S_{ij}
+$$
+
+## Velocity Structure Function
+
+$$
+S_p(r)
+=
+\left\langle
+\left|
+\mathbf{u}(\mathbf{x}+\mathbf{r})
+-
+\mathbf{u}(\mathbf{x})
+\right|^p
+\right\rangle
+$$
+
+## Turbulent Energy Spectrum
+
+$$
+E(k)
+\sim
+k^{-5/3}
+$$
+
+---
+
+# 17. Why PINO-LBM?
+
+## Lattice Boltzmann Method
+
+Provides a physically structured mesoscopic representation of fluid dynamics through the evolution of discrete particle distribution functions.
+
+## Neural Operators
+
+Learn mappings between function spaces, enabling the model to map an initial kinetic state directly to a future state.
+
+## Physics-Informed Learning
+
+Constrains the learned mapping using physically meaningful quantities, including moment consistency, symmetry equivariance, and SGS energy transfer.
+
+## Spectral Learning
+
+Captures long-range spatial interactions by learning transformations in Fourier space.
+
+## SGS Modeling
+
+Allows the framework to represent energy transfer between resolved and unresolved turbulent scales, including physical backscatter.
+
+---
+
+# 18. Reproducibility
+
+The framework is designed to support reproducible experiments through fixed model configurations, explicitly defined physics-informed loss weights, consistent dataset generation, and standardized evaluation diagnostics.
+
+A typical workflow is:
+
+```mermaid
+flowchart LR
+    A["Generate LBM Dataset"]
+    B["Configure PINO-LBM"]
+    C["Train Model"]
+    D["Save Checkpoint"]
+    E["Evaluate Predictions"]
+    F["Generate Turbulence Diagnostics"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+```
+
+---
+
+# 19. Evaluation Metrics
+
+| Diagnostic | Purpose |
+|---|---|
+| Density Error | Measures macroscopic prediction accuracy |
+| Distribution Error | Measures kinetic-state accuracy |
+| Energy Spectrum | Evaluates the turbulent energy cascade |
+| $k^{-5/3}$ Scaling | Tests inertial-range behavior |
+| Structure Functions | Evaluates turbulent scaling |
+| Intermittency | Evaluates anomalous statistics |
+| Vorticity | Evaluates coherent flow structures |
+| SGS Energy Transfer | Evaluates energy exchange across scales |
+| Backscatter Distribution | Evaluates negative SGS energy transfer |
+| Symmetry Error | Evaluates equivariance consistency |
+
+---
+
+# 20. Project Status
+
+This repository contains the research implementation associated with the FMFP 2026 publication.
+
+The current implementation focuses on:
+
+- D2Q9 LBM
+- Two-dimensional homogeneous isotropic turbulence
+- U-shaped Neural Operator architecture
+- Spectral convolutions
+- Physics-informed training
+- SGS energy-transfer prediction
+- Turbulence diagnostics
+- Comparison with the Smagorinsky model
+
+---
+
+# 21. Citation
+
+If you use this framework or implementation in your research, please cite:
+
+```bibtex
+@inproceedings{mahapatra2026physics,
+  title={Physics-Informed Boltzmann Kinetic Learning for Subgrid-Scale Turbulence Modeling in the Lattice Boltzmann Framework},
+  author={Mahapatra, Anjan and Raj, Nikhil},
+  booktitle={Proceedings of the 13th International and 53rd National Conference on Fluid Mechanics and Fluid Power (FMFP)},
+  number={FMFP2026-XX-YYY},
+  year={2026},
+  address={NIT Rourkela, India}
+}
+```
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+See [`LICENSE`](LICENSE) for details.
+
+---
+
+# Contact
+
+**Anjan Mahapatra**  
+anjanmahapatra10@gmail.com
+
+**Nikhil Raj**  
+nikhilraj24@iitk.ac.in
