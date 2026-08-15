@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/pino-lbm-banner.png" alt="PINO-LBM - Physics-Informed Boltzmann Kinetic Learning" width="100%">
+<img src="" alt="PINO-LBM - Physics-Informed Boltzmann Kinetic Learning" width="100%">
 
 # Physics-Informed Boltzmann Kinetic Learning for Subgrid-Scale Turbulence Modeling
 
