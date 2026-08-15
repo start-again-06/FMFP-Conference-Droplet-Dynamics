@@ -537,17 +537,7 @@ This demonstrates that the learned model can reproduce the characteristic turbul
 
 The $p$-th order velocity structure function is:
 
-$$
-S_p(r)
-=
-\left\langle
-\left|
-\mathbf{u}(\mathbf{x}+\mathbf{r})
--
-\mathbf{u}(\mathbf{x})
-\right|^p
-\right\rangle
-$$
+S_p(r) = \left\langle \left| \mathbf{u}(\mathbf{x}+\mathbf{r}) \cdot \mathbf{u}(\mathbf{x}) \right|^p \right\rangle
 
 The framework evaluates first-, second-, and third-order structure functions to assess turbulent scaling and intermittency.
 
@@ -582,7 +572,7 @@ Negative SGS energy-transfer events correspond to **backscatter**, representing 
 
 ---
 
-# 11. Getting Started
+# Getting Started
 
 ## Installation
 
@@ -611,7 +601,7 @@ Matplotlib
 
 ---
 
-# 12. Running the Framework
+# Running the Framework
 
 ## Generate LBM Dataset
 
@@ -657,7 +647,7 @@ The evaluation pipeline generates:
 
 ---
 
-# 13. Example Configuration
+# Example Configuration
 
 ```yaml
 model:
@@ -689,16 +679,16 @@ data:
 
 The complete learned neural operator is:
 
-$$
+```math
 \mathcal{G}_{\theta}:
 \mathbf{f}(\mathbf{x},t)
 \longmapsto
 \mathbf{f}(\mathbf{x},t+n\Delta t)
-$$
+```
 
 subject to the composite physics-informed loss:
 
-$$
+```math
 \mathcal{L}
 =
 \mathcal{L}_{\mathrm{data}}
@@ -711,7 +701,7 @@ $$
 +
 \lambda_{\Pi}
 \mathcal{L}_{\Pi}
-$$
+```
 
 The SGS energy transfer is defined as:
 
@@ -723,13 +713,11 @@ $$
 
 The turbulent energy spectrum follows the inertial-range scaling:
 
-$$
+```math
 E(k)
 \sim
 k^{-5/3}
-$$
-
----
+```
 
 # 15. Comparison with Classical SGS Modeling
 
@@ -810,6 +798,57 @@ E(k)
 k^{-5/3}
 $$
 
+---
+
+## Fallback Syntax (Fenced `math` Blocks)
+
+```math
+\rho
+=
+\sum_{i=0}^{8}
+f_i
+```
+
+```math
+\rho\mathbf{u}
+=
+\sum_{i=0}^{8}
+f_i\mathbf{c}_i
+```
+
+```math
+\mathbf{u}
+=
+\frac{1}{\rho}
+\sum_{i=0}^{8}
+f_i\mathbf{c}_i
+```
+
+```math
+\Pi
+=
+-\tau_{ij}S_{ij}
+```
+
+```math
+S_p(r)
+=
+\left\langle
+\left|
+\mathbf{u}(\mathbf{x}+\mathbf{r})
+-
+\mathbf{u}(\mathbf{x})
+\right|^p
+\right\rangle
+```
+
+```math
+E(k)
+\sim
+k^{-5/3}
+```
+
+---
 ---
 
 # 17. Why PINO-LBM?
