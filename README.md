@@ -468,5 +468,37 @@ flowchart LR
     G --> K["SGS Energy Transfer"]
 ```
 
-
+# End-to-End Training Process
     
+sequenceDiagram
+
+    participant LBM as D2Q9 LBM Solver
+    participant DATA as Dataset
+    participant UNO as PINO-LBM
+    participant PHYS as Physics Constraints
+    participant OPT as Adam Optimizer
+    participant EVAL as Evaluation
+
+    LBM->>DATA: Generate turbulent snapshots
+    DATA->>UNO: Distribution functions f_i
+
+    UNO->>UNO: Spectral encoding
+    UNO->>UNO: Neural operator mapping
+
+    UNO->>PHYS: Predicted state
+
+    PHYS->>PHYS: Data fidelity
+    PHYS->>PHYS: Moment matching
+    PHYS->>PHYS: Equivariance
+    PHYS->>PHYS: SGS energy transfer
+
+    PHYS->>OPT: Total loss
+    OPT->>UNO: Parameter update
+
+    UNO->>EVAL: Trained model
+
+    EVAL->>EVAL: Energy spectrum
+    EVAL->>EVAL: Structure functions
+    EVAL->>EVAL: Vorticity
+    EVAL->>EVAL: Backscatter statistics
+```
