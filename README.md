@@ -317,7 +317,7 @@ flowchart TD
 
 # Physics-Informed Loss Functions
 
-$$
+```math
 \mathcal{L}
 =
 \mathcal{L}_{\mathrm{data}}
@@ -327,7 +327,7 @@ $$
 \lambda_{\mathrm{equiv}} \mathcal{L}_{\mathrm{equiv}}
 +
 \lambda_{\Pi} \mathcal{L}_{\Pi}
-$$
+```
 
 ---
 
@@ -335,7 +335,7 @@ $$
 
 The data fidelity loss minimizes the difference between the predicted and reference LBM distribution functions:
 
-$$
+```math
 \mathcal{L}_{\mathrm{data}}
 =
 \frac{1}{9}
@@ -345,7 +345,7 @@ f_{i,\mathrm{pred}}
 -
 f_{i,\mathrm{true}}
 \right\|_2^2
-$$
+```
 
 This minimizes the deviation between the predicted and reference distribution functions.
 
@@ -355,7 +355,7 @@ This minimizes the deviation between the predicted and reference distribution fu
 
 The moment-matching loss explicitly constrains the macroscopic density and momentum fields:
 
-$$
+```math
 \mathcal{L}_{\mathrm{mom}}
 =
 \left|
@@ -369,7 +369,7 @@ $$
 -
 (\rho \mathbf{u})_{\mathrm{true}}
 \right\|_2^2
-$$
+```
 
 This explicitly promotes:
 
@@ -382,7 +382,7 @@ This explicitly promotes:
 
 The equivariance loss encourages the neural operator to preserve the symmetry properties of the lattice:
 
-$$
+```math
 \mathcal{L}_{\mathrm{equiv}}
 =
 \left\|
@@ -390,7 +390,7 @@ G(\mathbf{R} \cdot f)
 -
 \mathbf{R} \cdot G(f)
 \right\|_2^2
-$$
+```
 
 where $\mathbf{R}$ represents a lattice symmetry transformation.
 
@@ -409,7 +409,7 @@ This promotes consistency under the relevant dihedral symmetry operations.
 
 The SGS energy-transfer loss constrains the predicted subgrid-scale energy transfer:
 
-$$
+```math
 \mathcal{L}_{\Pi}
 =
 \left|
@@ -417,16 +417,16 @@ $$
 -
 \Pi_{\mathrm{true}}
 \right|^2
-$$
+```
 
 where the SGS energy transfer is defined as:
 
-$$
+```math
 \Pi
 =
 -
 \tau_{ij} S_{ij}
-$$
+```
 
 with:
 
