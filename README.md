@@ -879,7 +879,6 @@ If you use this framework or implementation in your research, please cite:
   title={Physics-Informed Boltzmann Kinetic Learning for Subgrid-Scale Turbulence Modeling in the Lattice Boltzmann Framework},
   author={Mahapatra, Anjan and Raj, Nikhil},
   booktitle={Proceedings of the 13th International and 53rd National Conference on Fluid Mechanics and Fluid Power (FMFP)},
-  number={FMFP2026-XX-YYY},
   year={2026},
   address={NIT Rourkela, India}
 }
